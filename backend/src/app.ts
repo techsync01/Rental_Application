@@ -8,7 +8,7 @@ import paymentRoute from "./routes/payment";
 import adminRoute from "./routes/admin";
 import { getConnection } from "./database/db.config";
 import { handleAuthentication } from "./middleware/AuthMiddleware";
-
+// console.log("local")
 const app: Application = express();
 const port = 1234;
 app.use(
