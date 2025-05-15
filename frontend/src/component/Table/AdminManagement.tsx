@@ -31,28 +31,25 @@ const AdminManagement: React.FC = () => {
 
   return (
     <>
-      {loading || updateLoading ? (
-        <Loading />
-      ) : (
-        <Box>
-          <Tabs
-            value={activeTab}
-            onChange={handleTabChange}
-            indicatorColor="primary"
-            textColor="primary"
-          >
-            <Tab label="Tenant Management" value="tenant" />
-            <Tab label="Property Owner Management" value="owner" />
-            <Tab label="Admin Management" value="admin" />
-          </Tabs>
+      {(loading || updateLoading) && <Loading />}
+      <Box>
+        <Tabs
+          value={activeTab}
+          onChange={handleTabChange}
+          indicatorColor="primary"
+          textColor="primary"
+        >
+          <Tab label="Tenant Management" value="tenant" />
+          <Tab label="Property Owner Management" value="owner" />
+          <Tab label="Admin Management" value="admin" />
+        </Tabs>
 
-          <Box sx={{ p: 2 }}>
-            {activeTab === "tenant" && <TenantTable setToggle={setToggle} />}
-            {activeTab === "owner" && <OwnerTable setToggle={setToggle} />}
-            {activeTab === "admin" && <AdminTable />}
-          </Box>
+        <Box sx={{ p: 2 }}>
+          {activeTab === "tenant" && <TenantTable setToggle={setToggle} />}
+          {activeTab === "owner" && <OwnerTable setToggle={setToggle} />}
+          {activeTab === "admin" && <AdminTable />}
         </Box>
-      )}
+      </Box>
     </>
   );
 };

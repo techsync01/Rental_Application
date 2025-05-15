@@ -424,9 +424,10 @@ const OwnerSignup: React.FC = () => {
 
   return (
     <>
-      {loading ? (
+      {/* {loading ? (
         <Loading />
-      ) : (
+      ) : ( */}
+      {loading && <Loading/>}
         <Container
           maxWidth="sm"
           sx={{
@@ -867,7 +868,7 @@ const OwnerSignup: React.FC = () => {
             </Box>
           </Box>
         </Container>
-      )}
+      {/* )} */}
     </>
   );
 };

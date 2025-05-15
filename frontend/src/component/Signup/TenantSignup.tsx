@@ -602,9 +602,8 @@ const TenantSignup: React.FC = () => {
   console.log("Form Data:", formData);
   return (
     <>
-      {loading ? (
-        <Loading />
-      ) : (
+  
+      {loading && <Loading/>}
         <Container
           maxWidth="sm"
           sx={{
@@ -1274,7 +1273,6 @@ const TenantSignup: React.FC = () => {
             </Box>
           </Box>
         </Container>
-      )}
     </>
   );
 };

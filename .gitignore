@@ -1,8 +1,10 @@
 /backend/node_modules
 /backend/.envfile
+/backend/.env
 /backend/dist
 
 /frontend/node_modules
 /frontend/dist
 /frontend/.envfile
+/frontend/.env
 /frontend/data.txt

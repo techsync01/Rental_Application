@@ -119,131 +119,128 @@ const Nearby: React.FC = () => {
   };
   return (
     <>
-      {loading ? (
-        <Loading />
-      ) : (
-        <Box p={2}>
-          <Typography variant="h6" gutterBottom mb={3}>
-            Neighborhood Information
-          </Typography>
+      {loading && <Loading />}
+      <Box p={2}>
+        <Typography variant="h6" gutterBottom mb={3}>
+          Neighborhood Information
+        </Typography>
 
-          <Grid container spacing={2}>
-            <Grid size={{ xs: 12 }}>
-              <TextField
-                id="outlined-read-only-input"
-                label="Neighborhood/Area"
-                value={property?.description?.neighborhood}
-                defaultValue="Hello World"
-                autoFocus={false}
-                multiline
-                minRows={1}
-                InputProps={{
-                  readOnly: true,
-                  sx: {
-                    pointerEvents: "none", // disables click
-                    alignItems: "flex-start",
-                  },
-                }}
-                fullWidth
-              />
-            </Grid>
-            <Grid size={{ xs: 12 }}>
-              <TextField
-                id="outlined-read-only-input"
-                label="Public Transportation"
-                value={property?.description?.transportation}
-                autoFocus={false}
-                multiline
-                minRows={1}
-                InputProps={{
-                  readOnly: true,
-                  sx: {
-                    pointerEvents: "none",
-                    alignItems: "flex-start",
-                  },
-                }}
-                fullWidth
-              />
-            </Grid>
-            <Grid size={{ xs: 12 }}>
-              <TextField
-                id="outlined-read-only-input"
-                label="Neighborhood Description"
-                value={property?.description?.neighborhoodDescription}
-                autoFocus={false}
-                multiline
-                minRows={1}
-                InputProps={{
-                  readOnly: true,
-                  sx: {
-                    pointerEvents: "none",
-                    alignItems: "flex-start",
-                  },
-                }}
-                fullWidth
-              />
-            </Grid>
-
-            <Grid size={{ xs: 12, sm: 6 }}>
-              <Typography variant="subtitle1" gutterBottom>
-                Nearby Points of Interest
-              </Typography>
-
-              {property?.description?.pointsOfInterest?.map((point, index) => (
-                <li key={index} style={{ marginBottom: "8px" }}>
-                  {point}
-                </li>
-              ))}
-            </Grid>
-
-            <Grid size={{ xs: 12 }} sx={{ position: "relative" }}>
-              <Typography variant="subtitle1" gutterBottom>
-                Map Location
-              </Typography>
-
-              <button
-                onClick={handleCurrentLocation}
-                style={{
-                  position: "absolute",
-                  zIndex: 1000,
-                  bottom: 13,
-                  right: 10,
-                  background: "rgb(82 82 82 / 16%)",
-                  padding: "6px 12px",
-                  borderRadius: 4,
-                  cursor: "pointer",
-                }}
-              >
-                <MyLocationIcon />
-              </button>
-
-              {property?.description?.neighborhoodLatitude &&
-                property?.description?.neighborhoodLongitude && (
-                  <MapContainer
-                    center={[
-                      property?.description?.neighborhoodLatitude,
-                      property?.description?.neighborhoodLongitude,
-                    ]}
-                    zoom={13}
-                    scrollWheelZoom={false}
-                    style={{ height: "300px", width: "100%" }}
-                  >
-                    <TileLayer
-                      attribution='&copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors'
-                      url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                    />
-                    <Marker position={mapLocation} />
-                    <LocationSelector />
-                    <RecenterMap lat={mapLocation[0]} lng={mapLocation[1]} />
-                    <GeocoderControl
-                      onSelect={(coords) => setMapLocation(coords)}
-                    />
-                  </MapContainer>
-                )}
-            </Grid>
+        <Grid container spacing={2}>
+          <Grid size={{ xs: 12 }}>
+            <TextField
+              id="outlined-read-only-input"
+              label="Neighborhood/Area"
+              value={property?.description?.neighborhood}
+              defaultValue="Hello World"
+              autoFocus={false}
+              multiline
+              minRows={1}
+              InputProps={{
+                readOnly: true,
+                sx: {
+                  pointerEvents: "none", // disables click
+                  alignItems: "flex-start",
+                },
+              }}
+              fullWidth
+            />
           </Grid>
-        </Box>
-      )}
+          <Grid size={{ xs: 12 }}>
+            <TextField
+              id="outlined-read-only-input"
+              label="Public Transportation"
+              value={property?.description?.transportation}
+              autoFocus={false}
+              multiline
+              minRows={1}
+              InputProps={{
+                readOnly: true,
+                sx: {
+                  pointerEvents: "none",
+                  alignItems: "flex-start",
+                },
+              }}
+              fullWidth
+            />
+          </Grid>
+          <Grid size={{ xs: 12 }}>
+            <TextField
+              id="outlined-read-only-input"
+              label="Neighborhood Description"
+              value={property?.description?.neighborhoodDescription}
+              autoFocus={false}
+              multiline
+              minRows={1}
+              InputProps={{
+                readOnly: true,
+                sx: {
+                  pointerEvents: "none",
+                  alignItems: "flex-start",
+                },
+              }}
+              fullWidth
+            />
+          </Grid>
+
+          <Grid size={{ xs: 12, sm: 6 }}>
+            <Typography variant="subtitle1" gutterBottom>
+              Nearby Points of Interest
+            </Typography>
+
+            {property?.description?.pointsOfInterest?.map((point, index) => (
+              <li key={index} style={{ marginBottom: "8px" }}>
+                {point}
+              </li>
+            ))}
+          </Grid>
+
+          <Grid size={{ xs: 12 }} sx={{ position: "relative" }}>
+            <Typography variant="subtitle1" gutterBottom>
+              Map Location
+            </Typography>
+
+            <button
+              onClick={handleCurrentLocation}
+              style={{
+                position: "absolute",
+                zIndex: 1000,
+                bottom: 13,
+                right: 10,
+                background: "rgb(82 82 82 / 16%)",
+                padding: "6px 12px",
+                borderRadius: 4,
+                cursor: "pointer",
+              }}
+            >
+              <MyLocationIcon />
+            </button>
+
+            {property?.description?.neighborhoodLatitude &&
+              property?.description?.neighborhoodLongitude && (
+                <MapContainer
+                  center={[
+                    property?.description?.neighborhoodLatitude,
+                    property?.description?.neighborhoodLongitude,
+                  ]}
+                  zoom={13}
+                  scrollWheelZoom={false}
+                  style={{ height: "300px", width: "100%" }}
+                >
+                  <TileLayer
+                    attribution='&copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors'
+                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                  />
+                  <Marker position={mapLocation} />
+                  <LocationSelector />
+                  <RecenterMap lat={mapLocation[0]} lng={mapLocation[1]} />
+                  <GeocoderControl
+                    onSelect={(coords) => setMapLocation(coords)}
+                  />
+                </MapContainer>
+              )}
+          </Grid>
+        </Grid>
+      </Box>
     </>
   );
 };
